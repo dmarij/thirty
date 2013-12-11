@@ -1,0 +1,12 @@
+
+<li>
+	<span class="challenge"><%= link_to single_challenge.title, single_challenge %></span>
+	<% if single_challenge.state == 'In progress' %>
+		<span class="label label-info">In progress</span>
+		<span class="content"><%= single_challenge.days_from_start %> of <%= single_challenge.duration %> days passed</span>
+	<% elsif single_challenge.state == 'Expired' %>
+		<span class="label label-warning">Expired</span>
+		<span class="content">Expired <%= single_challenge.days_from_start - single_challenge.duration%> days ago</span>
+	<% end %>
+	<span class="timestamp">Started <%= time_ago_in_words(single_challenge.created_at) %> ago.</span>
+</li>

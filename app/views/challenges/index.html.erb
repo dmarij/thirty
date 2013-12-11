@@ -1,0 +1,36 @@
+
+<h3>All Challenges</h3>
+<%= link_to 'New Challenge', new_challenge_path, :class => 'btn btn-default pull-right' %><br/><br/>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Started at</th>
+      <th>Duration</th>
+      <th>State</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @challenges.each do |challenge| %>
+      <tr>
+        <td><%= link_to challenge.title, challenge %></td>
+        <td><%= challenge.created_at.to_date %></td>
+        <td><%= challenge.duration %></td>
+        <td><%= challenge.final_state.capitalize %></td>
+        <td><%= link_to(edit_challenge_path(challenge)) do %>
+          <i class='icon-pencil'></i>
+          <% end %>
+        </td>
+        <td><%= link_to(challenge, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+          <i class='icon-trash'></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+

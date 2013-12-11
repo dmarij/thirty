@@ -1,0 +1,11 @@
+<%= simple_form_for(@challenge, :html => {:class => 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div>
+    <%= f.input :title %>
+    <%= f.input :duration %>
+    <%= f.input :description %>
+  
+    <%= f.button :submit, :class => 'btn-primary' %>
+  </div>
+<% end %>

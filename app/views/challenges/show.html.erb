@@ -1,0 +1,25 @@
+
+<h3>
+  <%= @challenge.title %>
+</h3>
+
+<p>
+  <strong>Progress:</strong>
+  <%= @challenge.days_from_start %> / <%= @challenge.duration %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @challenge.description %>
+</p>
+
+<%= link_to('<i class="icon-pencil"></i> Edit'.html_safe, edit_challenge_path(@challenge), class: 'btn btn-default') %>
+
+<%= link_to('<i class="icon-thumbs-down"></i> Give up'.html_safe, give_up_challenge_path(@challenge), data: { confirm: 'Are you sure?' }, class: 'btn btn-default') %>
+          
+<%= link_to('<i class="icon-trash"></i> Delete'.html_safe, @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default') %>
+          
+<br/><br/>
+<%= link_to 'Back', session[:return_to_aft_chall] %> 
+
+

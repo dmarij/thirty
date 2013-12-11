@@ -1,4 +1,20 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<% if user_signed_in? %>
+	<h3>Active Challenges</h3>
+	<%= link_to "New Challenge", new_challenge_path, class: "btn btn-default pull-right" %><br/><br/>
+	<% if @challenges.any? %>
+		<ol class="challenges">
+			<%= render partial: 'challenges/single_challenge', collection: @challenges %>
+		</ol>
+	
+	<% end %>
+	
+<% else %>
+	<div class="center hero-unit">
+		<h1>Welcome to the Thirty</h1>
+		<h2>
+		Track and annotate your personal time limited challenges.
+		</h2>
+		<%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-large btn-primary" %>
+	</div>
 <% end %>
+

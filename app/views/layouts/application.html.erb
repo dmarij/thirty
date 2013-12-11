@@ -11,19 +11,22 @@
   <body>
     <%# application layout styled for Twitter Bootstrap 2.3 %>
     <header>
+    <div class="container">
       <%= render 'layouts/navigation' %>
+    </div>
+    
     </header>
     <main role="main">
       <div class="container">
+        <div class="span8 offset2">
         <div class="content">
-           <div class="row">
-            <div class="span12">
+            <div class="row">
               <%= render 'layouts/messages' %>
               <%= yield %>
             </div>
-          </div>
-          <footer>
-          </footer>
+            <footer>
+            </footer>
+        </div>
         </div>
       </div>
     </main>

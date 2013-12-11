@@ -12,4 +12,16 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def my_redirect_back_or(default)
+      redirect_to(session[:return_to_aft_chall] || default, notice: 'Challenge was successfully created.' )
+  end
+
+  def delete_new_challenge_refferer
+    session.delete(:return_to_aft_chall)
+  end
+
+  def my_store_location
+    session[:return_to_aft_chall] = request.url if request.get?
+  end
+
 end

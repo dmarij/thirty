@@ -14,7 +14,8 @@ gem 'devise'
 gem 'figaro'
 gem 'rolify'
 gem 'simple_form'
-gem "ransack"
+gem 'ransack'
+gem 'will_paginate', '~> 3.0'
 
 group :development do
   gem 'better_errors'

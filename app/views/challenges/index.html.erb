@@ -6,8 +6,7 @@
     <%= f.select(:final_state_eq, options) %>
     <%= f.submit "Search", :name => nil, :class => "btn" %>
 <% end %>
-
-<table class="table table-condensed">
+<table class="table table-hover" >
   <thead>
     <tr>
       <th><%= sort_link @q, :title, "Title" %></th>
@@ -20,7 +19,7 @@
   </thead>
   <tbody>
     <% @challenges.each do |challenge| %>
-      <tr>
+    <tr>
         <td><%= link_to challenge.title, challenge %></td>
         <td><%= challenge.created_at.to_date %></td>
         <td><%= challenge.duration %></td>
@@ -37,6 +36,9 @@
     <% end %>
   </tbody>
 </table>
+<div class="pagination-centered">
+<%= will_paginate %>
+</div>
 <%= link_to 'New Challenge', new_challenge_path, :class => 'btn btn-default pull-left' %>
 
 

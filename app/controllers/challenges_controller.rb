@@ -5,7 +5,8 @@ class ChallengesController < ApplicationController
   def index
     delete_new_challenge_refferer
     my_store_location
-    @challenges = Challenge.all
+    @q = Challenge.search(params[:q])
+    @challenges = @q.result
   end
 
   # GET /challenges/1

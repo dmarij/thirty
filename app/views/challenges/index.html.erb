@@ -1,13 +1,19 @@
-
 <h3>All Challenges</h3>
-<%= link_to 'New Challenge', new_challenge_path, :class => 'btn btn-default pull-right' %><br/><br/>
+
+<%= search_form_for @q, :html => {:class => "form-inline"} do |f| %>
+    <%= f.text_field :title_cont, class: "input-medium", placeholder: "Search by Title" %>
+    <% options = [['--Select State--', ""], ['Active', 'active'], ['Done', 'done'], ['Failed', 'failed']] %>
+    <%= f.select(:final_state_eq, options) %>
+    <%= f.submit "Search", :name => nil, :class => "btn" %>
+<% end %>
+
 <table class="table table-condensed">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Started at</th>
-      <th>Duration</th>
-      <th>State</th>
+      <th><%= sort_link @q, :title, "Title" %></th>
+      <th><%= sort_link @q, :created_at, "Started" %></th>
+      <th><%= sort_link @q, :duration, "Duration" %></th>
+      <th><%= sort_link @q, :final_state, "State" %></th>
       <th></th>
       <th></th>
     </tr>
@@ -31,6 +37,7 @@
     <% end %>
   </tbody>
 </table>
+<%= link_to 'New Challenge', new_challenge_path, :class => 'btn btn-default pull-left' %>
 
 
 

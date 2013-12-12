@@ -1,12 +1,12 @@
 <% if user_signed_in? %>
 	<h3>Active Challenges</h3>
-	<%= link_to "New Challenge", new_challenge_path, class: "btn btn-default pull-right" %><br/><br/>
 	<% if @challenges.any? %>
 		<ol class="challenges">
 			<%= render partial: 'challenges/single_challenge', collection: @challenges %>
 		</ol>
 	
 	<% end %>
+<%= link_to "New Challenge", new_challenge_path, class: "btn btn-default pull-left" %><br/><br/>
 	
 <% else %>
 	<div class="center hero-unit">

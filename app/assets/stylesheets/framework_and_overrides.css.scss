@@ -69,6 +69,12 @@ input, textarea, select, .uneditable-input {
   margin-bottom: 15px;
   @include box_sizing;
 }
+#q_final_state_eq {
+  border: 1px solid #bbb;
+  width: 150px;
+  margin-bottom: 0px;
+  @include box_sizing;
+}
 
 input {
   height: auto !important;

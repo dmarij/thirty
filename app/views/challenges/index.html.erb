@@ -1,11 +1,27 @@
-<h3>All Challenges</h3>
+<div class="well">
 
-<%= search_form_for @q, :html => {:class => "form-inline"} do |f| %>
-    <%= f.text_field :title_cont, class: "input-medium", placeholder: "Search by Title" %>
-    <% options = [['--Select State--', ""], ['Active', 'active'], ['Done', 'done'], ['Failed', 'failed']] %>
-    <%= f.select(:final_state_eq, options) %>
-    <%= f.submit "Search", :name => nil, :class => "btn" %>
-<% end %>
+    <div class="span4">
+    <span class="label label-info"><%= Challenge.active_count %> Active</span>
+    <span class="label label-success"><%= Challenge.done_count %> Done</span>
+    <span class="label label-important"><%= Challenge.failed_count %> Failed</span>
+    </div>
+    
+</div>
+
+<div>
+    <%= link_to "New Challenge", new_challenge_path, class: "btn btn-primary pull-right" %>
+</div>
+
+<h3>All Challenges</h3>
+<div>
+      <%= search_form_for @q, :html => {:class => "form-inline"} do |f| %>
+      <%= f.text_field :title_cont, class: "input-medium", placeholder: "Search by Title" %>
+      <% options = [['--Select State--', ""], ['Active', 'active'], ['Done', 'done'], ['Failed', 'failed']] %>
+      <%= f.select(:final_state_eq, options) %>
+      <%= f.submit('Filter', :name => nil, :class => "btn") %>
+      <% end %>
+</div>
+
 <table class="table table-hover" >
   <thead>
     <tr>
@@ -39,7 +55,6 @@
 <div class="pagination-centered">
 <%= will_paginate %>
 </div>
-<%= link_to 'New Challenge', new_challenge_path, :class => 'btn btn-default pull-left' %>
 
 
 

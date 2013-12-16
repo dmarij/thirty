@@ -1,12 +1,21 @@
 
 <li>
-	<span class="challenge"><%= link_to single_challenge.title, single_challenge %></span>
-	<% if single_challenge.state == 'In progress' %>
-		<span class="label label-info">In progress</span>
-		<span class="content"><%= single_challenge.days_from_start %> of <%= single_challenge.duration %> days passed</span>
+	<span class="challenge"><h4><%= link_to single_challenge.title, single_challenge %></h4></span>
+	
+	<% if single_challenge.state == 'In progress'%>
+	<span class="badge badge"><%= single_challenge.duration %></span>
+		<% if single_challenge.days_from_start == 0 %>
+			<div class="progress progress-info progress-striped active"><p class="text-info text-center">0 out of <%= single_challenge.duration %> days completed. Good luck!</p></div>
+		<% else %>
+			<div class="progress progress-info progress-striped active">
+ 				<div class="bar" style="width: <%= single_challenge.percent_complete %>%;"><p><%= single_challenge.days_from_start %></p>
+ 				</div>
+ 			</div>
+ 		<% end %>
 	<% elsif single_challenge.state == 'Expired' %>
-		<span class="label label-warning">Expired</span>
-		<span class="content">Expired <%= single_challenge.days_from_start - single_challenge.duration%> days ago</span>
+	<span class="badge badge"><%= single_challenge.duration %></span>
+		<div class="progress progress-info"><div class="bar" style="width: 100%;"><p class="text-center"><%= single_challenge.duration %> out of <%= single_challenge.duration %> days completed. Expired <%= single_challenge.days_from_start - single_challenge.duration%> days ago!</p></div>
+		</div>
 	<% end %>
-	<span class="timestamp">Started <%= time_ago_in_words(single_challenge.created_at) %> ago.</span>
+	<span class="timestamp">Started <%= time_ago_in_words(single_challenge.created_at) %> ago, at <%= single_challenge.created_at.to_date %>.</span>
 </li>

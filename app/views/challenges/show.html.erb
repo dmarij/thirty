@@ -1,25 +1,42 @@
+<div class="well">
+<p class="timestamp">Started at <%=@challenge.created_at.to_date%>.</p>
 
-<h3>
-  <%= @challenge.title %>
-</h3>
-
-<p>
-  <strong>Progress:</strong>
-  <%= @challenge.days_from_start %> / <%= @challenge.duration %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @challenge.description %>
-</p>
-
-<%= link_to('<i class="icon-pencil"></i> Edit'.html_safe, edit_challenge_path(@challenge), class: 'btn btn-default') %>
-
-<%= link_to('<i class="icon-thumbs-down"></i> Give up'.html_safe, give_up_challenge_path(@challenge), data: { confirm: 'Are you sure?' }, class: 'btn btn-default') %>
+<% if @challenge.state == 'In progress'%>
+		<span class="badge badge"><%= @challenge.duration %></span>
+		<% if @challenge.days_from_start == 0 %>
+			<div class="progress progress-info progress-striped active"><p class="text-info text-center">0 out of <%= @challenge.duration %> days completed. Good luck!</p></div>
+		<% else %>
+			<div class="progress progress-info progress-striped active">
+ 				<div class="bar" style="width: <%= @challenge.percent_complete %>%;"><p><%= @challenge.days_from_start %></p>
+ 				</div>
+ 			</div>
+ 		<% end %>
+<% elsif @challenge.state == 'Expired' %>
+		<span class="badge badge"><%= @challenge.duration %></span>
+		<div class="progress progress-info"><div class="bar" style="width: 100%;"><p class="text-center"><%= @challenge.duration %> out of <%= @challenge.duration %> days completed. Expired <%= @challenge.days_from_start - @challenge.duration%> days ago!</p></div></div>
+<% elsif @challenge.state == 'Done' %>
+		<span class="badge badge"><%= @challenge.duration %></span>
+		<div class="progress progress-success"><div class="bar" style="width: 100%;"><p class="text-center">Done!</p></div></div>
+<% elsif @challenge.state == 'Failed' %>
+		<span class="badge badge"><%= @challenge.duration %></span>
+		<div class="progress progress-danger"><div class="bar" style="width: 100%;"><p class="text-center">Failed!</p></div></div>
+<% end %>
+</div>
+<div>
+		<%= link_to('<i class="icon-pencil"></i> Edit'.html_safe, edit_challenge_path(@challenge), class: 'btn btn-default') %>
+		<%= link_to('<i class="icon-trash"></i> Delete'.html_safe, @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default') %>
+		<%= link_to('<i class="icon-thumbs-down"></i> Give up'.html_safe, give_up_challenge_path(@challenge), data: { confirm: 'Are you sure?' }, class: 'btn btn-danger') %>
           
-<%= link_to('<i class="icon-trash"></i> Delete'.html_safe, @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default') %>
-          
-<br/><br/>
-<%= link_to 'Back', session[:return_to_aft_chall] %> 
+		
+		<br/><br/>
+		<%= link_to 'Back', session[:return_to_aft_chall] %> 
+</div>
+<h1><%= @challenge.title %></h1>
+<%= @challenge.description.html_safe %>
+<br/>
+
+
+
+
 
 

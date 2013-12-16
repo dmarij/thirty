@@ -1,11 +1,16 @@
 <%= simple_form_for(@challenge, :html => {:class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
-
   <div>
     <%= f.input :title %>
     <%= f.input :duration %>
-    <%= f.input :description %>
-  
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'wysihtml5', style: "width: 100%; height: 200px;" %>
     <%= f.button :submit, :class => 'btn-primary' %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $('.wysihtml5').each(function(i, elem) {
+    $(elem).wysihtml5({"image": false, "color": true});
+  });
+</script>

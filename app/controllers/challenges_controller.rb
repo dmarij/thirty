@@ -59,7 +59,7 @@ class ChallengesController < ApplicationController
   def destroy
     @challenge.destroy
     respond_to do |format|
-      format.html { redirect_to challenges_url }
+      format.html { redirect_to challenges_url, notice: 'Challenge was successfully deleted.' }
       format.json { head :no_content }
     end
   end

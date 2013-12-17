@@ -1,14 +1,8 @@
 <% if user_signed_in? %>
-	<div class="well">
-		<div class="span4">
-    <span class="label label-info"><%= Challenge.active_count %> Active</span>
-    <span class="label label-success"><%= Challenge.done_count %> Done</span>
-    <span class="label label-important"><%= Challenge.failed_count %> Failed</span>
-    </div>
-    </div>
-  <span><%= link_to "New Challenge", new_challenge_path, class: "btn btn-primary pull-right" %></span>
+<div class="span8">  
+  <span><%= link_to "New Challenge", new_challenge_path, class: "btn btn-default pull-right" %></span>
   <div>
-	<h3>Active Challenges</h3>
+	<h3 class="muted">Active Challenges</h3>
 	</div>
 	<% if @challenges.any? %>
 		<ol class="challenges">
@@ -16,13 +10,21 @@
 		</ol>
 	
 	<% end %>
+</div>
+<aside class="span4"><h3 class="muted">Stats</h3><br/>
+	<span class="label label-info"><%= Challenge.active_count %> Active</span>
+  <span class="label label-success"><%= Challenge.done_count %> Done</span>
+  <span class="label label-important"><%= Challenge.failed_count %> Failed</span>
+</aside>
 <% else %>
+	<div class="span12">
 	<div class="center hero-unit">
 		<h1 class="text-center">Welcome to the Thirty</h1>
 		<h2 class="text-center">
 		Track and annotate your personal time limited challenges.
 		</h2>
 		<%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-large btn-primary" %>
+	</div>
 	</div>
 <% end %>
 

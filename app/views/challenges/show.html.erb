@@ -1,4 +1,17 @@
-<div class="well">
+<div class="span8">
+	<div>
+		<%= link_to 'Back', session[:return_to_aft_chall], class: 'btn btn-default' %>
+		<%= link_to('<i class="icon-pencil"></i> Edit'.html_safe, edit_challenge_path(@challenge), class: 'btn btn-default') %>
+		<%= link_to('<i class="icon-trash"></i> Delete'.html_safe, @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default') %>
+		<%= link_to('<i class="icon-thumbs-down"></i> Give up'.html_safe, give_up_challenge_path(@challenge), data: { confirm: 'Are you sure?' }, class: 'btn btn-default') %>
+		<br/><br/>
+	</div>
+	<h1><%= @challenge.title %></h1>
+	<%= @challenge.description.html_safe %>
+	<h3 class="muted">Notes</h3>
+</div>
+<aside class="span4">
+<h3 class="muted">Status</h3>
 <p class="timestamp">Started at <%=@challenge.created_at.to_date%>.</p>
 
 <% if @challenge.state == 'In progress'%>
@@ -21,19 +34,8 @@
 		<span class="badge badge"><%= @challenge.duration %></span>
 		<div class="progress progress-danger"><div class="bar" style="width: 100%;"><p class="text-center">Failed!</p></div></div>
 <% end %>
-</div>
-<div>
-		<%= link_to('<i class="icon-pencil"></i> Edit'.html_safe, edit_challenge_path(@challenge), class: 'btn btn-default') %>
-		<%= link_to('<i class="icon-trash"></i> Delete'.html_safe, @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default') %>
-		<%= link_to('<i class="icon-thumbs-down"></i> Give up'.html_safe, give_up_challenge_path(@challenge), data: { confirm: 'Are you sure?' }, class: 'btn btn-danger') %>
-          
-		
-		<br/><br/>
-		<%= link_to 'Back', session[:return_to_aft_chall] %> 
-</div>
-<h1><%= @challenge.title %></h1>
-<%= @challenge.description.html_safe %>
-<br/>
+</aside>
+
 
 
 

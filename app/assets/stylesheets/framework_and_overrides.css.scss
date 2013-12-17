@@ -112,6 +112,7 @@ input {
 }
 .badge {
   float: right;
+  
 }
 
 .timestamp {
@@ -122,6 +123,8 @@ input {
   margin-right: 10px;
 }
 aside {
+  display: block;
+
   textarea {
     height: 100px;
     margin-bottom: 5px;

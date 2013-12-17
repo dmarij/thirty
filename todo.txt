@@ -1,11 +1,11 @@
-- ne radi back kod edit account ako se prvo neuspješno pokuša izmijeniti (promijeniti default jerbo ide na user index)
 
 - dodati akciju 'Done'
 - eneblati/disableati 'Done' i 'Give up'
 - dodati 'Reactivate' na failed i done
 - provjeriti da li je moguće postaviti defaultni final_state Active bez callbacka
-
 - dodati validaju obveznog title i duration na challenge
-- dodati defaultnu rolu User kod sign-up
+
+
+
 - povezati usere i challenge
 - ograničiti usera na njegove challenge

@@ -2,7 +2,12 @@
 	<div>
 		<%= link_to('<i class="icon-pencil"></i> Edit'.html_safe, edit_challenge_path(@challenge), class: 'btn btn-default') %>
 		<%= link_to('<i class="icon-trash"></i> Delete'.html_safe, @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default') %>
-		<%= link_to('<i class="icon-thumbs-down"></i> Give up'.html_safe, give_up_challenge_path(@challenge), data: { confirm: 'Are you sure?' }, class: 'btn btn-default') %>
+		<% if @challenge.final_state == 'active' %>
+		<%= link_to('<i class="icon-thumbs-up"></i> Done'.html_safe, done_challenge_path(@challenge), class: 'btn btn-default') %>
+		<%= link_to('<i class="icon-thumbs-down"></i> Give up'.html_safe, give_up_challenge_path(@challenge), class: 'btn btn-default') %>
+		<% else %>
+		<%= link_to('<i class="icon-refresh"></i> Reactivate'.html_safe, reactivate_challenge_path(@challenge), class: 'btn btn-default') %>
+		<% end %>
 	</div>
 	<br/>
 	<%= link_to 'Back', session[:return_to_aft_chall] %>
@@ -18,7 +23,7 @@
 <% if @challenge.state == 'In progress'%>
 		<span class="badge badge"><%= @challenge.duration %></span>
 		<% if @challenge.days_from_start == 0 %>
-			<div class="progress progress-info progress-striped active"><p class="text-info text-center">0 out of <%= @challenge.duration %> days completed. Good luck!</p></div>
+			<div class="progress progress-info progress-striped active"><p class="text-info text-center smallertext">0 out of <%= @challenge.duration %> days completed. Good luck!</p></div>
 		<% else %>
 			<div class="progress progress-info progress-striped active">
  				<div class="bar" style="width: <%= @challenge.percent_complete %>%;"><p><%= @challenge.days_from_start %></p>

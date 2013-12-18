@@ -1,7 +1,7 @@
 Thirty::Application.routes.draw do
   resources :challenges do
   	member do
-      get :give_up
+      get :give_up, :done, :reactivate
     end
   end
 

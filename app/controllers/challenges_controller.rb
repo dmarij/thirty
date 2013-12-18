@@ -1,5 +1,5 @@
 class ChallengesController < ApplicationController
-  before_action :set_challenge, only: [:show, :edit, :update, :destroy, :give_up]
+  before_action :set_challenge, only: [:show, :edit, :update, :destroy, :give_up, :done, :reactivate]
   # GET /challenges
   # GET /challenges.json
   def index
@@ -27,6 +27,7 @@ class ChallengesController < ApplicationController
   # POST /challenges.json
   def create
     @challenge = Challenge.new(challenge_params)
+    @challenge.final_state = 'active'
 
     respond_to do |format|
       if @challenge.save
@@ -67,6 +68,16 @@ class ChallengesController < ApplicationController
   def give_up
     @challenge.update_attribute(:final_state, 'failed')
     redirect_to @challenge, notice: 'Challenge was marked as failed.'
+  end
+
+  def done
+    @challenge.update_attribute(:final_state, 'done')
+    redirect_to @challenge, notice: 'Challenge was marked as done.'
+  end
+
+  def reactivate
+    @challenge.update_attribute(:final_state, 'active')
+    redirect_to @challenge, notice: 'Challenge is active again.'
   end
 
   private

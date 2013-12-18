@@ -17,6 +17,7 @@ class ChallengesController < ApplicationController
   # GET /challenges/new
   def new
     @challenge = Challenge.new
+    @challenge.duration = 30
   end
 
   # GET /challenges/1/edit

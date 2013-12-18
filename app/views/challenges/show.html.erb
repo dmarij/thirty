@@ -1,5 +1,11 @@
 <div class="span8">
 	<div>
+		<div>
+		<h1 class="muted text-info"><%= @challenge.title %></h1>
+		<%= @challenge.description.html_safe %>
+		</div>
+		<div>
+		<br/>
 		<%= link_to('<i class="icon-pencil"></i> Edit'.html_safe, edit_challenge_path(@challenge), class: 'btn btn-default') %>
 		<%= link_to('<i class="icon-trash"></i> Delete'.html_safe, @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default') %>
 		<% if @challenge.final_state == 'active' %>
@@ -8,12 +14,12 @@
 		<% else %>
 		<%= link_to('<i class="icon-refresh"></i> Reactivate'.html_safe, reactivate_challenge_path(@challenge), class: 'btn btn-default') %>
 		<% end %>
+		</div>
 	</div>
 	<br/>
 	<%= link_to 'Back', session[:return_to_aft_chall] %>
 
-	<h1><%= @challenge.title %></h1>
-	<%= @challenge.description.html_safe %>
+
 	<h3 class="muted">Notes</h3>
 </div>
 <aside class="span4">

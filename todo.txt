@@ -1,8 +1,5 @@
 - promijeniti defaultni sort na Home i All challenges (od najnovijeg prema starijima)
 - dodati pluralizaciju za dane (expired, started...)
-- dodati lijepe bedževe na statuse
-- razmaknuti stats bedževe
-- dodati muted i bordered naslove na sve forme
 - staviti lijepi multiselect filter
 
 - dodati repeat akciju

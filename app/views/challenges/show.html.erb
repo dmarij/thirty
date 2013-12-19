@@ -1,7 +1,7 @@
 <div class="span8">
 	<div>
 		<div>
-		<h1 class="muted text-info"><%= @challenge.title %></h1>
+		<h3 class="muted text-info bordered"><%= @challenge.title %></h3>
 		<%= @challenge.description.html_safe %>
 		</div>
 		<div>
@@ -20,11 +20,11 @@
 	<%= link_to 'Back', session[:return_to_aft_chall] %>
 
 
-	<h3 class="muted">Notes</h3>
+	<h3 class="muted bordered">Notes</h3>
 </div>
 <aside class="span4">
-<h3 class="muted">Status</h3>
-<p class="timestamp">Started at <%=@challenge.created_at.to_date%>.</p>
+<h3 class="muted bordered">Status</h3>
+<p class="timestamp">Started on <%=@challenge.created_at.to_date%>.</p>
 
 <% if @challenge.state == 'In progress'%>
 		<span class="badge badge"><%= @challenge.duration %></span>

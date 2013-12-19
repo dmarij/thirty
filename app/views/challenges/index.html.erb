@@ -4,7 +4,7 @@
     <%= link_to "New Challenge", new_challenge_path, class: "btn btn-default pull-right" %>
 </div>
 
-<h3 class="muted">All Challenges</h3>
+<h3 class="muted bordered">All Challenges</h3>
 
 <table class="table table-hover" >
   <thead>
@@ -40,20 +40,22 @@
 <%= will_paginate %>
 </div>
 </div>
-<aside class="span4"><h3 class="muted">Stats</h3><br/>
+<aside class="span4"><h3 class="muted bordered">Stats</h3><br/>
   <span class="label label-info"><%= Challenge.active_count %> Active</span>
   <span class="label label-success"><%= Challenge.done_count %> Done</span>
   <span class="label label-important"><%= Challenge.failed_count %> Failed</span>
   <br/><br/>
 </aside>
 
-<aside class="span4"><h3 class="muted">Filter</h3><br/>
+<aside class="span4"><h3 class="muted bordered">Filter</h3><br/>
     <%= search_form_for @q, :html => {:class => "form-search"} do |f| %>
     <%= f.text_field :title_cont, class: "input-medium", placeholder: "Search by Title" %>
     <% options = [['--Select State--', ""], ['Active', 'active'], ['Done', 'done'], ['Failed', 'failed']] %>
     <%= f.select(:final_state_eq, options) %>
-    <br/><br/>
-    <%= f.submit('Filter', :name => nil, :class => "btn") %>
+    <%= f.button( :class => "btn btn-default") do %>
+      <i class="icon-search"></i>
+    <% end %>
+    
     <% end %>
 </aside>
 

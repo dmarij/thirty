@@ -1,6 +1,14 @@
-- povezati usere i challenge
-- ograničiti usera na njegove challenge
-
-- staviti lijepi multiselect na filter
 - promijeniti defaultni sort na Home i All challenges (od najnovijeg prema starijima)
 - dodati pluralizaciju za dane (expired, started...)
+- dodati lijepe bedževe na statuse
+- razmaknuti stats bedževe
+- dodati muted i bordered naslove na sve forme
+- staviti lijepi multiselect filter
+
+- dodati repeat akciju
+- urediti akcije na challenge show ekranu
+- dodati give_up, done, reactivate i repeat na index
+
+-	dodati devise autorizaciju na challenge
+- povezati usere i challenge
+- ograničiti usera na njegove challenge

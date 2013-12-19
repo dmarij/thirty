@@ -17,5 +17,5 @@
 		<div class="progress progress-info"><div class="bar" style="width: 100%;"><p class="text-center"><%= single_challenge.duration %> out of <%= single_challenge.duration %> days completed. Expired <%= single_challenge.days_from_start - single_challenge.duration%> days ago!</p></div>
 		</div>
 	<% end %>
-	<span class="timestamp">Started <%= time_ago_in_words(single_challenge.created_at) %> ago, at <%= single_challenge.created_at.to_date %>.</span>
+	<span class="timestamp">Started <%= time_ago_in_words(single_challenge.created_at) %> ago, on <%= single_challenge.created_at.to_date %>.</span>
 </li>

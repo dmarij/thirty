@@ -41,6 +41,10 @@ h1 {
   
 }
 
+.bordered {
+  padding: 10px 0;
+  border-bottom: 1px solid #e8e8e8;
+}
 
 p {
   font-size: 1.1em;
@@ -97,7 +101,7 @@ input {
 
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
   }
 }
 .content {

@@ -49,19 +49,32 @@
   <span class="label label-success"><%= Challenge.done_count %> Done</span>
   <span class="label label-important"><%= Challenge.failed_count %> Failed</span>
   <br/><br/>
-</aside>
-
-<aside class="span4"><h3 class="muted bordered">Filter</h3><br/>
-    <%= search_form_for @q, :html => {:class => "form-search"} do |f| %>
+  <h3 class="muted bordered">Filter</h3><br/>
+  <%= search_form_for @q, :html => {:class => "form-inline"} do |f| %>
+    <span class="pull-left">
     <%= f.text_field :title_cont, class: "input-medium", placeholder: "Search by Title" %>
-    <% options = [['--Select State--', ""], ['Active', 'active'], ['Done', 'done'], ['Failed', 'failed']] %>
-    <%= f.select(:final_state_eq, options) %>
-    <%= f.button( :class => "btn btn-default") do %>
+    </span>
+    <% options = [['Active', 'active'], ['Done', 'done'], ['Failed', 'failed']] %>
+    <span>
+    <%= f.select(:final_state_in, options, {}, {:class => "selectpicker", :multiple => true}) %>
+    </span>
+    <script type="text/javascript">
+      $('.selectpicker').selectpicker({
+        width: '172px',
+        title: 'Filter by State',
+        style: 'btn btn-link'
+      });
+    </script>
+    <span>
+    <%= f.button( :class => "btn pull-right") do %>
       <i class="icon-search"></i>
     <% end %>
+    </span>
     
     <% end %>
 </aside>
+
+
 
 
 

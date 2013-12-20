@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'ransack'
 gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-wysihtml5-rails'
+gem 'bootstrap-select-rails'
 
 group :development do
   gem 'better_errors'

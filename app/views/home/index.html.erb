@@ -7,7 +7,11 @@
 	<% if @challenges.any? %>
 		<ol class="challenges">
 			<%= render partial: 'challenges/single_challenge', collection: @challenges %>
+
 		</ol>
+		<div class="pagination-centered">
+		<%= will_paginate @challenges %>
+		</div>
 	
 	<% end %>
 </div>

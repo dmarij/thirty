@@ -1,6 +1,7 @@
 
 <li>
-	<span class="challenge"><h4><%= link_to single_challenge.title, single_challenge %></h4></span>
+	<% desc = raw(single_challenge.description) %>
+	<span class="challenge"><h4><%= link_to single_challenge.title, single_challenge, :data => {:toggle => "popover", :placement => "right", :content => "#{desc}", :html => "true", 'title data-original-title' => "Description"} %></h4></span>
 	
 	<% if single_challenge.state == 'In progress'%>
 	<span class="badge badge"><%= single_challenge.duration %></span>
@@ -19,3 +20,8 @@
 	<% end %>
 	<span class="timestamp">Started <%= time_ago_in_words(single_challenge.created_at) %> ago, on <%= single_challenge.created_at.to_date %>.</span>
 </li>
+<script type="text/javascript">
+  $('a').popover({
+    trigger: 'hover'
+  })
+</script>

@@ -1,12 +1,12 @@
 class ChallengesController < ApplicationController
-  before_action :set_challenge, only: [:show, :edit, :update, :destroy, :give_up, :done, :reactivate]
+  before_action :set_challenge, only: [:show, :edit, :update, :destroy, :give_up, :done, :reactivate, :repeat]
   # GET /challenges
   # GET /challenges.json
   def index
     delete_new_challenge_refferer
     my_store_location
     @q = Challenge.search(params[:q])
-    @challenges = @q.result.paginate(:page => params[:page], :per_page => 10)
+    @challenges = @q.result.paginate(:page => params[:page], :per_page => 14)
   end
 
   # GET /challenges/1
@@ -80,6 +80,17 @@ class ChallengesController < ApplicationController
     @challenge.update_attribute(:final_state, 'active')
     redirect_to @challenge, notice: 'Challenge is active again.'
   end
+
+  def repeat
+    @new_challenge = Challenge.new()
+    @new_challenge.title = @challenge.title
+    @new_challenge.duration = @challenge.duration
+    @new_challenge.description = @challenge.description
+    @new_challenge.final_state = 'active'
+    @new_challenge.save
+    redirect_to @new_challenge, notice: 'Challenge was successfully cloned and started again.'
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

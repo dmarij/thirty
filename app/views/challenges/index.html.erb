@@ -29,13 +29,33 @@
         <td><span class="label label-important"><%= challenge.final_state.capitalize %></span></td>
         <% end %>
         <td><%= link_to(edit_challenge_path(challenge)) do %>
-          <i class='icon-pencil'></i>
+          <i class='icon-pencil' data-toggle="tooltip" title data-original-title="Edit challenge"></i>
           <% end %>
         </td>
         <td><%= link_to(challenge, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-          <i class='icon-trash'></i>
+          <i class='icon-trash' data-toggle="tooltip" title data-original-title="Delete challenge"></i>
           <% end %>
         </td>
+        <% if challenge.final_state == 'active' %>
+        <td><%= link_to(done_challenge_path(challenge)) do %>
+          <i class='icon-thumbs-up' data-toggle="tooltip" title data-original-title="Mark as done"></i>
+          <% end %>
+        </td>
+        <td><%= link_to(give_up_challenge_path(challenge)) do %>
+          <i class='icon-thumbs-down' data-toggle="tooltip" title data-original-title="Mark as failed"></i>
+          <% end %>
+        </td>
+        <% else %>
+        <td><%= link_to(reactivate_challenge_path(challenge)) do %>
+          <i class='icon-refresh' data-toggle="tooltip" title data-original-title="Make it active again"></i>
+          <% end %>
+        </td>
+        <td><%= link_to(repeat_challenge_path(challenge)) do %>
+          <i class='icon-repeat' data-toggle="tooltip" title data-original-title="Clone and start again"></i>
+          <% end %>
+        </td>
+        <% end %>
+
       </tr>
     <% end %>
   </tbody>
@@ -48,8 +68,8 @@
   <span class="label label-info"><%= Challenge.active_count %> Active</span>
   <span class="label label-success"><%= Challenge.done_count %> Done</span>
   <span class="label label-important"><%= Challenge.failed_count %> Failed</span>
-  <br/><br/>
-  <h3 class="muted bordered">Filter</h3><br/>
+  <br/>
+  <h3 class="muted bordered"></h3><br/>
   <%= search_form_for @q, :html => {:class => "form-inline"} do |f| %>
     <span class="pull-left">
     <%= f.text_field :title_cont, class: "input-medium", placeholder: "Search by Title" %>
@@ -66,13 +86,19 @@
       });
     </script>
     <span>
-    <%= f.button( :class => "btn pull-right") do %>
-      <i class="icon-search"></i>
+    <%= f.button( :class => "btn btn-info pull-right") do %>
+      <i class="icon-search icon-white"></i>
     <% end %>
     </span>
     
     <% end %>
 </aside>
+
+<script type="text/javascript">
+  $('i').tooltip()
+</script>
+
+
 
 
 

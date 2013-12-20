@@ -1,7 +1,4 @@
 
-- dodati repeat akciju
-- urediti akcije na challenge show ekranu
-- dodati give_up, done, reactivate i repeat na index
 
 -	dodati devise autorizaciju na challenge
 - povezati usere i challenge

@@ -19,7 +19,8 @@
   <tbody>
     <% @challenges.each do |challenge| %>
     <tr>
-        <td><span class="badge badge"><%= challenge.duration %></span><%= link_to challenge.title, challenge %></td>
+        <% desc = raw(challenge.description) %>
+        <td><span class="badge badge"><%= challenge.duration %></span><%= link_to challenge.title, challenge, :data => {:toggle => "popover", :placement => "right", :content => "#{desc}", :html => "true", 'title data-original-title' => "Description"} %></td>
         <td><%= challenge.created_at.to_date %></td>
         <% if challenge.final_state == 'active' %>
         <td><span class="label label-info"><%= challenge.final_state.capitalize %></span></td>
@@ -96,6 +97,11 @@
 
 <script type="text/javascript">
   $('i').tooltip()
+</script>
+<script type="text/javascript">
+  $('a').popover({
+    trigger: 'hover'
+  })
 </script>
 
 

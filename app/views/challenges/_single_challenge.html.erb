@@ -6,7 +6,7 @@
 	<% if single_challenge.state == 'In progress'%>
 	<span class="badge badge"><%= single_challenge.duration %></span>
 		<% if single_challenge.days_from_start == 0 %>
-			<div class="progress progress-info progress-striped active"><p class="text-info text-center smallertext">0 out of <%= pluralize(single_challenge.duration, "day") %> completed. Good luck!</p></div>
+			<div class="progress progress-info progress-striped active"><p class="text-center smallertext">0 out of <%= pluralize(single_challenge.duration, "day") %> completed. Good luck!</p></div>
 		<% else %>
 			<div class="progress progress-info progress-striped active">
  				<div class="bar" style="width: <%= single_challenge.percent_complete %>%;"><p><%= single_challenge.days_from_start %></p>
@@ -15,7 +15,7 @@
  		<% end %>
 	<% elsif single_challenge.state == 'Expired' %>
 	<span class="badge badge"><%= single_challenge.duration %></span>
-		<div class="progress progress-info"><div class="bar" style="width: 100%;"><p class="text-center"><%= single_challenge.duration %> out of <%= pluralize(single_challenge.duration, "day") %> completed. Expired <%= pluralize((single_challenge.days_from_start - single_challenge.duration), "day")%> ago!</p></div>
+		<div class="progress progress-info progress-striped"><div class="bar" style="width: 100%;"><p class="text-center"><%= single_challenge.duration %> out of <%= pluralize(single_challenge.duration, "day") %> completed. Expired <%= pluralize((single_challenge.days_from_start - single_challenge.duration), "day")%> ago!</p></div>
 		</div>
 	<% end %>
 	<span class="timestamp">Started <%= time_ago_in_words(single_challenge.created_at) %> ago, on <%= single_challenge.created_at.to_date %>.</span>

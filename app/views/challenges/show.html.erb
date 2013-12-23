@@ -39,15 +39,15 @@
 
 	<div>
 		<br/>
-		<%= link_to('<i class="icon-pencil"></i> Edit'.html_safe, edit_challenge_path(@challenge), class: 'btn btn-default btn-small') %>
-		<%= link_to('<i class="icon-trash"></i> Delete'.html_safe, @challenge, method: :delete, data: { confirm: 'Are you sure? Your challenge and related notes, if any, will be gone!' }, class: 'btn btn-small btn-default') %>
+		<%= link_to('<i class="icon-pencil"></i> Edit'.html_safe, edit_challenge_path(@challenge), class: 'btn btn-default btn-link') %>
+		<%= link_to('<i class="icon-trash"></i> Delete'.html_safe, @challenge, method: :delete, data: { confirm: 'Are you sure? Your challenge and related notes, if any, will be gone!' }, class: 'btn btn-default btn-link') %>
 		
 		<% if @challenge.final_state == 'active' %>
-		<%= link_to('<i class="icon-thumbs-up"></i> Done'.html_safe, done_challenge_path(@challenge), class: 'btn btn-small btn-success') %>
-		<%= link_to('<i class="icon-thumbs-down"></i> Give up'.html_safe, give_up_challenge_path(@challenge), class: 'btn btn-small btn-danger') %>
+		<%= link_to('<i class="icon-thumbs-up"></i> Done'.html_safe, done_challenge_path(@challenge), class: 'btn btn-default btn-link') %>
+		<%= link_to('<i class="icon-thumbs-down"></i> Give up'.html_safe, give_up_challenge_path(@challenge), class: 'btn btn-default btn-link') %>
 		<% else %>
-		<%= link_to('<i class="icon-refresh"></i> Reactivate'.html_safe, reactivate_challenge_path(@challenge), class: 'btn btn-small btn-info') %>
-		<%= link_to('<i class="icon-repeat"></i> Repeat'.html_safe, repeat_challenge_path(@challenge), class: 'btn btn-small btn-info') %>
+		<%= link_to('<i class="icon-refresh"></i> Reactivate'.html_safe, reactivate_challenge_path(@challenge), class: 'btn btn-default btn-link') %>
+		<%= link_to('<i class="icon-repeat"></i> Repeat'.html_safe, repeat_challenge_path(@challenge), class: 'btn btn-default btn-link') %>
 		<% end %>
 	</div>
 </aside>

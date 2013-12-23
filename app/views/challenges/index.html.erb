@@ -1,10 +1,12 @@
 <div class="span8">
 
 <div>
-    <%= link_to "New Challenge", new_challenge_path, class: "btn btn-link pull-right" %>
+
+    
 </div>
 
 <h3 class="muted bordered">All Challenges</h3>
+<%= link_to('<i class="icon-plus"></i> New Challenge'.html_safe, new_challenge_path, class: 'btn btn-link pull-right') %>
 
 <table class="table table-hover" >
   <thead>
@@ -65,12 +67,10 @@
 <%= will_paginate %>
 </div>
 </div>
-<aside class="span4"><h3 class="muted bordered">Stats</h3><br/>
-  <span class="label label-info"><%= Challenge.active_count %> Active</span>
-  <span class="label label-default"><%= Challenge.done_count %> Done</span>
-  <span class="label label-inverse"><%= Challenge.failed_count %> Failed</span>
-  <br/>
-  <h3 class="muted bordered"></h3><br/>
+<aside class="span4"><h3 class="muted bordered">Stats</h3>
+  
+  <%= render 'chart' %>
+  <h3 class="muted bordered">Filter</h3><br/>
   <%= search_form_for @q, :html => {:class => "form-inline"} do |f| %>
     <span class="pull-left">
     <%= f.text_field :title_cont, class: "input-medium", placeholder: "Search by Title" %>

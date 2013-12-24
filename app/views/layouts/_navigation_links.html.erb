@@ -1,20 +1,21 @@
 <%# add navigation links to this file %>
 <div class="container">
 
+
 <ul class="nav">
-	<li><%= link_to 'Home', root_path%><li>
+	<li><%= link_to('<i class="icon-home"></i> Home'.html_safe, root_path) %><li>
 	<% if user_signed_in? %>
-  	<li><%= link_to 'Challenges', challenges_path %></li>
+  	<li><%= link_to('<i class="icon-tasks"></i> Challenges'.html_safe, challenges_path) %></li>
 	<% end %>
 </ul>
 <ul class="nav pull-right">
 	<% if user_signed_in? %>
-	  <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete'%></li>
+	  <li><%= link_to('<i class="icon-off"></i> Logout'.html_safe, destroy_user_session_path, :method=>'delete') %></li>
 	<% else %>
   	<li><%= link_to 'Login', new_user_session_path %></li>
 	<% end %>
 	<% if user_signed_in? %>
-	  	<li><%= link_to 'Edit account', edit_user_registration_path %></li>
+	  	<li><%= link_to('<i class="icon-user"></i> Account'.html_safe, edit_user_registration_path) %></li>
 	<% else %>
 	  	<li><%= link_to 'Sign up', new_user_registration_path %></li>
 	<% end %>

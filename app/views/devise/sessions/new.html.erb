@@ -4,7 +4,10 @@
   <%= f.input :email, :autofocus => true %>
   <%= f.input :password %>
   <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-  <%= f.button :submit, "Sign in", :class => 'btn-primary' %>
+  <%= button_tag(type: 'submit', class: 'btn btn-large btn-link') do %>
+    <i class="icon-ok"></i> Sign in
+    <% end %>
 <% end %>
+<br/>
 <%= render "devise/shared/links" %>
 </div>

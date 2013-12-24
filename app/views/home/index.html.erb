@@ -5,6 +5,7 @@
 	<h3 class="muted bordered">Active Challenges</h3>
 	<%= link_to('<i class="icon-plus"></i> New Challenge'.html_safe, new_challenge_path, class: 'btn btn-link pull-right') %>
 	</div>
+	<br/>
 	<% if @challenges.any? %>
 		<ol class="challenges">
 			<%= render partial: 'challenges/single_challenge', collection: @challenges %>

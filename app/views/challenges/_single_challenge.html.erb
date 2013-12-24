@@ -1,9 +1,9 @@
 
 <li>
 	<% desc = raw(single_challenge.description) %>
-	<span class="challenge"><h4><%= link_to single_challenge.title, single_challenge, :data => {:toggle => "popover", :placement => "right", :content => "#{desc}", :html => "true", 'title data-original-title' => "Description"} %></h4></span>
+	<span><%= link_to single_challenge.title, single_challenge, :data => {:toggle => "popover", :placement => "right", :content => "#{desc}", :html => "true", 'title data-original-title' => "Description"} %></span>
 	
-	<% if single_challenge.state == 'In progress'%>
+	<% if single_challenge.state == 'In progress' %>
 	<span class="badge badge"><%= single_challenge.duration %></span>
 		<% if single_challenge.days_from_start == 0 %>
 			<div class="progress progress-info progress-striped active"><p class="text-center smallertext">0 out of <%= pluralize(single_challenge.duration, "day") %> completed. Good luck!</p></div>

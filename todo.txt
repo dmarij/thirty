@@ -1,9 +1,7 @@
-- dodati ikonu na back button, home, challenges, edit account
-- promijeniti submit buttone u link buttone i dodati ikone
-- dodati tekst u slučaju da nema aktivnih challenga
-- dodati tekst u slučaju da nema niti jednog challenga
 
 
 -	dodati devise autorizaciju na challenge
 - povezati usere i challenge
 - ograničiti usera na njegove challenge
+- dodati tekst u slučaju da user nema aktivnih challenga
+- dodati tekst u slučaju da user nema niti jednog challenga

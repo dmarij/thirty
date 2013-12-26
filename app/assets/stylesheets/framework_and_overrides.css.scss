@@ -102,12 +102,26 @@ input {
     border-bottom: 1px solid #e8e8e8;
   }
 
+
+}
+
+.challdefault {
+
+  li {
+    padding: 0 0 0 0;
+    border-bottom: none;
+  }
   a {
     font-size: 1.25em;
     font-weight: bold;
   }
-
 }
+
+.progress {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
 
 .content {
   display: block;

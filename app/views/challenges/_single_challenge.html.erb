@@ -1,7 +1,8 @@
 
 <li>
 	<% desc = raw(single_challenge.description) %>
-	<span><%= link_to single_challenge.title, single_challenge, :data => {:toggle => "popover", :placement => "right", :content => "#{desc}", :html => "true", 'title data-original-title' => "Description"} %></span>
+<div>
+	<span class="challdefault"><%= link_to single_challenge.title, single_challenge, :data => {:toggle => "popover", :placement => "right", :content => "#{desc}", :html => "true", 'title data-original-title' => "Description"} %></span>
 	
 	<% if single_challenge.state == 'In progress' %>
 	<span class="badge badge"><%= single_challenge.duration %></span>
@@ -15,9 +16,10 @@
  		<% end %>
 	<% elsif single_challenge.state == 'Expired' %>
 	<span class="badge badge"><%= single_challenge.duration %></span>
-		<div class="progress progress-info progress-striped"><div class="bar" style="width: 100%;"><p class="text-center"><%= single_challenge.duration %> out of <%= pluralize(single_challenge.duration, "day") %> completed. Expired <%= pluralize((single_challenge.days_from_start - single_challenge.duration), "day")%> ago!</p></div>
+		<div class="challdefault progress progress-info progress-striped"><div class="bar" style="width: 100%;"><p class="text-center"><%= single_challenge.duration %> out of <%= pluralize(single_challenge.duration, "day") %> completed. Expired <%= pluralize((single_challenge.days_from_start - single_challenge.duration), "day")%> ago!</p></div>
 		</div>
 	<% end %>
+</div>
 	<span class="timestamp">Started <%= time_ago_in_words(single_challenge.created_at) %> ago, on <%= single_challenge.created_at.to_date %>.</span>
 </li>
 <script type="text/javascript">

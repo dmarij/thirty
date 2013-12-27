@@ -3,4 +3,4 @@
 <% @title = '' %>
 <% @data = [Challenge.active_count, Challenge.done_count, Challenge.failed_count] %>
 
-<%= image_tag(Gchart.pie_3d(:data => @data, :title => @title, :labels => @legend,  :bar_colors => ['3a87ad','999999','6E6E6E'], size: '350x180')) %>
+<%= image_tag(Gchart.pie_3d(:data => @data, :title => @title, :legend => @legend,  :bar_colors => ['3a87ad','999999','6E6E6E'], size: '350x180')) %>

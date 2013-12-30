@@ -1,6 +1,10 @@
 <% require 'gchart' %>
-<% @legend = ["Active #{Challenge.active_count}", "Done #{Challenge.done_count}", "Failed #{Challenge.failed_count}"] %>
+<% active = current_user.challenges.where(final_state: 'active').count %>
+<% done = current_user.challenges.where(final_state: 'done').count %>
+<% failed = current_user.challenges.where(final_state: 'failed').count %>
+
+<% @legend = ["Active #{active}", "Done #{done}", "Failed #{failed}"] %>
 <% @title = '' %>
-<% @data = [Challenge.active_count, Challenge.done_count, Challenge.failed_count] %>
+<% @data = [active, done, failed] %>
 
 <%= image_tag(Gchart.pie_3d(:data => @data, :title => @title, :legend => @legend,  :bar_colors => ['3a87ad','999999','6E6E6E'], size: '350x180')) %>

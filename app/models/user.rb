@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :challenges, dependent: :destroy
 	after_create :set_default_role
   rolify
   # Include default devise modules. Others available are:

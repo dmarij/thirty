@@ -1,7 +1,10 @@
 class Challenge < ActiveRecord::Base
+
+	belongs_to :user
 	default_scope { order('created_at desc') }
 	validates :title, presence: true
 	validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0}
+	validates :user_id, presence: true
 
 	def days_from_start
 		(Time.now - self.created_at).to_i / 1.day
@@ -24,18 +27,6 @@ class Challenge < ActiveRecord::Base
 		return 'Expired' if expired?
 		return 'Done' if self.final_state == 'done'
 		return 'Failed' if self.final_state == 'failed'
-	end
-
-	def self.active_count
-		Challenge.where(final_state: 'active').count
-	end
-
-	def self.done_count
-		Challenge.where(final_state: 'done').count
-	end
-
-	def self.failed_count
-		Challenge.where(final_state: 'failed').count
 	end
 
 end

@@ -1,4 +1,6 @@
 class ChallengesController < ApplicationController
+  load_and_authorize_resource :except => [:new, :create]
+
   before_filter :authenticate_user!
   before_action :set_challenge, only: [:show, :edit, :update, :destroy, :give_up, :done, :reactivate, :repeat]
   # GET /challenges
@@ -6,13 +8,14 @@ class ChallengesController < ApplicationController
   def index
     delete_new_challenge_refferer
     my_store_location
-    @q = Challenge.search(params[:q])
+    @q = current_user.challenges.search(params[:q])
     @challenges = @q.result.paginate(:page => params[:page], :per_page => 14)
   end
 
   # GET /challenges/1
   # GET /challenges/1.json
   def show
+    
   end
 
   # GET /challenges/new
@@ -30,6 +33,7 @@ class ChallengesController < ApplicationController
   def create
     @challenge = Challenge.new(challenge_params)
     @challenge.final_state = 'active'
+    @challenge.user_id = current_user.id
 
     respond_to do |format|
       if @challenge.save
@@ -87,6 +91,7 @@ class ChallengesController < ApplicationController
     @new_challenge.title = @challenge.title
     @new_challenge.duration = @challenge.duration
     @new_challenge.description = @challenge.description
+    @new_challenge.user_id = @challenge.user_id
     @new_challenge.final_state = 'active'
     @new_challenge.save
     redirect_to @new_challenge, notice: 'Challenge was successfully cloned and started again.'

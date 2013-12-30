@@ -1,8 +1,2 @@
 
 
--	dodati devise autorizaciju na challenge
-
-- povezati usere i challenge
-- ograničiti usera na njegove challenge
-- dodati tekst u slučaju da user nema aktivnih challenga
-- dodati tekst u slučaju da user nema niti jednog challenga

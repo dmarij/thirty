@@ -1,5 +1,4 @@
 <div class="span8">
-
 <h3 class="muted bordered">All Challenges</h3>
 <%= link_to('<i class="icon-plus"></i> New Challenge'.html_safe, new_challenge_path, class: 'btn btn-link pull-right') %>
 
@@ -61,7 +60,7 @@
 </table>
 <% else %>
 <div></br>
-<h4 class="muted center">Oh my! You don't have any challenges at all.</h4>
+<h4 class="muted center">Nothing found.</h4>
 </div>
 <% end %>
 <div class="pagination-centered">
@@ -69,33 +68,36 @@
 </div>
 </div>
 <aside class="span4"><h3 class="muted bordered">Stats</h3>
-  
   <%= render 'chart' %>
-  <h3 class="muted bordered">Filter</h3><br/>
-  <%= search_form_for @q, :html => {:class => "form-inline"} do |f| %>
-    <span class="pull-left">
-    <%= f.text_field :title_cont, class: "input-medium", placeholder: "Search by Title" %>
+  <h3 class="muted bordered">Search</h3><br/>
+  <%= search_form_for @q, :html => {:class => ""} do |f| %>
+  <div class="row">
+    <div>
+    <span class="pull-left span4">
+    <%= f.text_field :title_cont, placeholder: "Search by Title" %>
     </span>
+    </div>
+    <br/><br/>
+    <div>
     <% options = [['Active', 'active'], ['Done', 'done'], ['Failed', 'failed']] %>
-    <span>
+    <span class="span2">
     <%= f.select(:final_state_in, options, {}, {:class => "selectpicker", :multiple => true}) %>
     </span>
-    <script type="text/javascript">
-      $('.selectpicker').selectpicker({
-        width: '172px',
-        title: 'Filter by State',
-        style: 'btn btn-link'
-      });
-    </script>
-    <span>
+    <span class="span2">
     <%= f.button( :class => "btn btn-link pull-right") do %>
-      <i class="icon-search"></i>
+      <i class="icon-search"></i> Search
     <% end %>
     </span>
-    
+    </div>
     <% end %>
+  </div>
 </aside>
-
+<script type="text/javascript">
+   $('.selectpicker').selectpicker({
+    title: 'Filter by State',
+    style: 'btn btn-link'
+      });
+</script>
 <script type="text/javascript">
   $('i').tooltip()
 </script>

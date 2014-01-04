@@ -6,6 +6,7 @@
 	<li><%= link_to('<i class="icon-home"></i> Home'.html_safe, root_path) %><li>
 	<% if user_signed_in? %>
   	<li><%= link_to('<i class="icon-tasks"></i> Challenges'.html_safe, challenges_path) %></li>
+  	<li><%= link_to('<i class="icon-file"></i> Notes'.html_safe, notes_path) %></li>
 	<% end %>
 </ul>
 <ul class="nav pull-right">

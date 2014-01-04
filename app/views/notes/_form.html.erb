@@ -1,10 +1,9 @@
-<%= simple_form_for(@challenge, :html => {:class => 'form-vertical' }) do |f| %>
+<%= simple_form_for(@note) do |f| %>
   <%= f.error_notification %>
-  <div>
-    <%= f.input :title %>
-    <%= f.input :duration %>
-    <%= f.label :description %>
-    <%= f.text_area :description, class: 'wysihtml5', style: "width: 99%; height: 200px;" %>
+  <div class="form-inputs">
+    <%= f.association :challenge, collection: current_user.challenges, prompt: "Chose a challenge" %>
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'wysihtml5', style: "width: 99%; height: 200px;" %>
     <%= button_tag(type: 'submit', class: 'btn btn-large btn-link') do %>
     <i class="icon-ok"></i> Save
     <% end %>

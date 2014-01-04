@@ -1,6 +1,5 @@
 <% if user_signed_in? %>
 <div class="span8">  
-  
   <div>
 	<h3 class="muted bordered">Active Challenges</h3>
 	<%= link_to('<i class="icon-plus"></i> New Challenge'.html_safe, new_challenge_path, class: 'btn btn-link pull-right') %>
@@ -9,7 +8,6 @@
 	<% if @challenges.any? %>
 		<ol class="challenges">
 			<%= render partial: 'challenges/single_challenge', collection: @challenges %>
-
 		</ol>
 		<div class="pagination-centered">
 		<%= will_paginate @challenges %>

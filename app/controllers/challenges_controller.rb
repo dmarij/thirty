@@ -1,8 +1,7 @@
 class ChallengesController < ApplicationController
   load_and_authorize_resource :except => [:new, :create]
-
   before_filter :authenticate_user!
-  before_action :set_challenge, only: [:show, :edit, :update, :destroy, :give_up, :done, :reactivate, :repeat]
+  before_action :set_challenge, only: [:show, :edit, :update, :destroy, :give_up, :done, :reactivate, :repeat, :index_notes]
   # GET /challenges
   # GET /challenges.json
   def index
@@ -15,6 +14,10 @@ class ChallengesController < ApplicationController
   # GET /challenges/1
   # GET /challenges/1.json
   def show
+    delete_note_refferer
+    note_store_location
+    @notes = @challenge.notes.paginate(:page => params[:page], :per_page => 5)
+    @note = @challenge.notes.build
   end
 
   # GET /challenges/new
@@ -95,7 +98,6 @@ class ChallengesController < ApplicationController
     @new_challenge.save
     redirect_to @new_challenge, notice: 'Challenge was successfully cloned and started again.'
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

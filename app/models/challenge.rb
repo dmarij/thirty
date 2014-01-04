@@ -1,6 +1,6 @@
 class Challenge < ActiveRecord::Base
-
 	belongs_to :user
+	has_many :notes, dependent: :destroy
 	default_scope { order('created_at desc') }
 	validates :title, presence: true
 	validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0}

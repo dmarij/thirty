@@ -24,8 +24,12 @@
 	</div>
 
 	<h3 class="muted bordered">Notes</h3>
+	<div>
+      <%= render 'index_notes' %>
+	</div>
 </div>
 <aside class="span4">
+<div>
 <h3 class="muted bordered">Status</h3>
 <p class="timestamp">Started on <%=@challenge.created_at.to_date%>.</p>
 
@@ -41,7 +45,7 @@
  		<% end %>
 <% elsif @challenge.state == 'Expired' %>
 		<span class="badge badge"><%= @challenge.duration %></span>
-		<div class="progress progress-info"><div class="bar" style="width: 100%;"><p class="text-center"><%= @challenge.duration %> out of <%= pluralize(@challenge.duration, "day") %> completed. Expired <%= pluralize((@challenge.days_from_start - @challenge.duration), "day")%> ago!</p></div></div>
+		<div class="progress progress-info progress-striped"><div class="bar" style="width: 100%;"><p class="text-center"><%= @challenge.duration %> out of <%= pluralize(@challenge.duration, "day") %> completed. Expired <%= pluralize((@challenge.days_from_start - @challenge.duration), "day")%> ago!</p></div></div>
 <% elsif @challenge.state == 'Done' %>
 		<span class="badge badge"><%= @challenge.duration %></span>
 		<div class="progress progress-success"><div class="bar" style="width: 100%;"><p class="text-center">Done!</p></div></div>
@@ -49,8 +53,12 @@
 		<span class="badge badge"><%= @challenge.duration %></span>
 		<div class="progress progress-danger"><div class="bar" style="width: 100%;"><p class="text-center">Failed!</p></div></div>
 <% end %>
-
-	
+</div>
+<br/>
+<div>
+<h3 class="muted bordered">New Note</h3>
+<%= render 'note_form' %>
+</div>
 </aside>
 
 

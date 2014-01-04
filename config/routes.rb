@@ -1,4 +1,6 @@
 Thirty::Application.routes.draw do
+  resources :notes
+
   resources :challenges do
   	member do
       get :give_up, :done, :reactivate, :repeat

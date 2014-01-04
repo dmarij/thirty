@@ -1,2 +1,3 @@
 
-
+- dodati ordering notes-a
+- dodati indexe u bazu

@@ -1,0 +1,18 @@
+<div class="span8">
+	<div>
+		<div>
+		<h3 class="muted bordered">Show Note</h3>
+		</div>
+		<p><strong>Body:</strong>
+  	<p><%= @note.body.html_safe %></p></p>
+		<p><strong>Challenge:</strong>
+  	<p><%= @note.challenge.title if @note.challenge %></p></p>
+		<p><strong>User:</strong><p><%= @note.user.name %></p></p>
+	</div>
+	<div>
+		<br/>
+		<%= link_to('<i class="icon-hand-left"></i> Back'.html_safe, notes_path, class: 'btn btn-default btn-link') %>
+		<%= link_to('<i class="icon-pencil"></i> Edit'.html_safe, edit_note_path(@note), class: 'btn btn-default btn-link') %>
+	</div>
+</div>
+

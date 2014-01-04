@@ -9,6 +9,7 @@ class Ability
 
     if user.has_role? :user
         can :manage, Challenge, :user_id => user.id
+        can :manage, Note, :user_id => user.id
     end
     # Define abilities for the passed in user here. For example:
     #

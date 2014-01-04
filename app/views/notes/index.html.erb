@@ -1,0 +1,34 @@
+<div class="span8">
+  <div>
+  <h3 class="muted bordered">All Notes</h3>
+  <%= link_to('<i class="icon-plus"></i> New Note'.html_safe, new_note_path, class: 'btn btn-link pull-right') %>
+  <br/>
+  </div>
+  <br/>
+  <% if @notes.any? %>
+    <ol class="challenges">
+      <%= render partial: 'notes/single_note', collection: @notes %>
+    </ol>
+    <div class="pagination-centered">
+    <%= will_paginate @notes %>
+    </div>
+  <% else %>
+  <h4 class="muted center">Nothing found.</h4>
+  <% end %>
+</div>
+<aside class="span4">
+  <h3 class="muted bordered">Search</h3><br/>
+  <div class="row">
+  <%= search_form_for @q, :html => {:class => "form-inline"} do |f| %>
+    <span class="pull-left span4">
+    <%= f.text_field :body_cont, class: "", placeholder: "Search by Content" %>
+    </span>
+    <br/><br/>
+    <span class="pull-left span4">
+    <%= f.button( :class => "btn btn-link pull-right") do %>
+      <i class="icon-search"></i> Search
+    <% end %>
+    </span>
+    <% end %>
+  </div>
+</aside>

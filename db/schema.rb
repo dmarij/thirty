@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131226235834) do
+ActiveRecord::Schema.define(version: 20131230214938) do
 
   create_table "challenges", force: true do |t|
     t.string   "title"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20131226235834) do
     t.string   "final_state"
     t.integer  "user_id"
   end
+
+  create_table "notes", force: true do |t|
+    t.text     "body"
+    t.integer  "challenge_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notes", ["challenge_id"], name: "index_notes_on_challenge_id"
+  add_index "notes", ["user_id"], name: "index_notes_on_user_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"

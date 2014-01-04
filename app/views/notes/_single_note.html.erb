@@ -1,0 +1,25 @@
+<li>
+<div>
+	<span class="timestamp">Created on <%= single_note.created_at.to_date %>. Challenge: <%= link_to(single_note.challenge.title, single_note.challenge) if single_note.challenge %>
+	</span>
+	<span class="pull-right">
+		<%= link_to(edit_note_path(single_note)) do %>
+          <i class='icon-pencil' data-toggle="tooltip" title data-original-title="Edit note"></i>
+    <% end %>
+    &nbsp;&nbsp;&nbsp;
+    <%= link_to(single_note, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+          <i class='icon-trash' data-toggle="tooltip" title data-original-title="Delete note"></i>
+    <% end %>
+    &nbsp;&nbsp;&nbsp;
+	</span>
+</div>
+<div>
+	<span class="content challdefault">
+		<%= single_note.body.html_safe %>
+	</span>
+</div>
+</li>
+
+<script type="text/javascript">
+  $('i').tooltip()
+</script>

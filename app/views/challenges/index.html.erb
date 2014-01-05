@@ -68,7 +68,14 @@
 </div>
 </div>
 <aside class="span4"><h3 class="muted bordered">Stats</h3>
-  <%= render 'chart' %>
+  <% if @challenges.any? %>
+    <%= render 'chart' %>
+  <% else %>
+    <div></br>
+    <h4 class="muted center">Nothing to show.</h4>
+    </div>
+  <% end %>
+
   <h3 class="muted bordered">Search</h3><br/>
   <%= search_form_for @q, :html => {:class => ""} do |f| %>
   <div class="row">

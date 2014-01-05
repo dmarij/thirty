@@ -17,7 +17,13 @@
 	<% end %>
 </div>
 <aside class="span4"><h3 class="muted bordered">Stats</h3>
-	<%= render '/challenges/chart' %>
+	<% if @challenges_all.any? %>
+    <%= render '/challenges/chart' %>
+  <% else %>
+    <div></br>
+    <h4 class="muted center">Nothing to show.</h4>
+    </div>
+  <% end %>
 </aside>
 <% else %>
 	<div class="span12">

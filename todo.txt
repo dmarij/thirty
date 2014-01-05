@@ -1,4 +1,5 @@
-
-- dodati indexe u bazu
-
 - dodati time zone usera
+
+- otvoriti gmail thirty account i promijeniti postavke
+- dodati ssl postavku
+- dodati produkcijske pg gemove

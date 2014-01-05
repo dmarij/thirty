@@ -1,6 +1,11 @@
 <div class="span8">
   <div>
-  <h3 class="muted bordered">All Notes</h3>
+  
+  <h3 class="muted bordered">All Notes<span class="pull-right">
+    <%= link_to(reorder_notes_path) do %>
+          <i class='icon-resize-vertical' data-toggle="tooltip" title data-original-title="Change order. Show most recent notes first or last."></i>&nbsp;&nbsp;
+    <% end %></span>
+  </h3>
   <%= link_to('<i class="icon-plus"></i> New Note'.html_safe, new_note_path, class: 'btn btn-link pull-right') %>
   <br/>
   </div>

@@ -1,9 +1,13 @@
 Thirty::Application.routes.draw do
-  resources :notes
+  resources :notes do
+  	collection do
+  	  get :reorder
+  	end
+  end
 
   resources :challenges do
   	member do
-      get :give_up, :done, :reactivate, :repeat
+      get :give_up, :done, :reactivate, :repeat, :reorder_notes
     end
   end
 

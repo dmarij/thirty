@@ -1,3 +1,4 @@
 
-- dodati ordering notes-a
 - dodati indexe u bazu
+
+- dodati time zone usera

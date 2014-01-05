@@ -1,7 +1,7 @@
 class ChallengesController < ApplicationController
   load_and_authorize_resource :except => [:new, :create]
   before_filter :authenticate_user!
-  before_action :set_challenge, only: [:show, :edit, :update, :destroy, :give_up, :done, :reactivate, :repeat, :index_notes]
+  before_action :set_challenge, only: [:show, :edit, :update, :destroy, :give_up, :done, :reactivate, :repeat, :reorder_notes]
   # GET /challenges
   # GET /challenges.json
   def index
@@ -16,7 +16,8 @@ class ChallengesController < ApplicationController
   def show
     delete_note_refferer
     note_store_location
-    @notes = @challenge.notes.paginate(:page => params[:page], :per_page => 5)
+    notes_order = current_user.notes_order_inline
+    @notes = @challenge.notes.order("id #{notes_order}").paginate(:page => params[:page], :per_page => 5)
     @note = @challenge.notes.build
   end
 
@@ -97,6 +98,15 @@ class ChallengesController < ApplicationController
     @new_challenge.final_state = 'active'
     @new_challenge.save
     redirect_to @new_challenge, notice: 'Challenge was successfully cloned and started again.'
+  end
+
+  def reorder_notes
+    if current_user.notes_order_inline == 'desc'
+      current_user.update_attribute(:notes_order_inline, 'asc')
+    else
+      current_user.update_attribute(:notes_order_inline, 'desc')
+    end
+    redirect_to @challenge
   end
 
   private

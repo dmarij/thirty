@@ -10,7 +10,9 @@ class NotesController < ApplicationController
     my_store_location
     delete_note_refferer
     note_store_location
+    notes_order = current_user.notes_order
     @q = current_user.notes.search(params[:q])
+    @q.sorts = "id #{notes_order}"
     @notes = @q.result.paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -67,6 +69,15 @@ class NotesController < ApplicationController
       format.html { note_redirect_back_or notes_url, 'Note was successfully deleted.' }
       format.json { head :no_content }
     end
+  end
+
+  def reorder
+    if current_user.notes_order == 'desc'
+      current_user.update_attribute(:notes_order, 'asc')
+    else
+      current_user.update_attribute(:notes_order, 'desc')
+    end
+    redirect_to notes_path
   end
 
   private

@@ -1,6 +1,6 @@
 <li>
 <div>
-	<span class="timestamp">Created on <%= single_note.created_at.to_date %>. Challenge: <%= link_to(single_note.challenge.title, single_note.challenge) if single_note.challenge %>
+	<span class="timestamp">Created on <%= single_note.created_at.to_date %>.
 	</span>
 	<span class="pull-right">
 		<%= link_to(edit_note_path(single_note)) do %>
@@ -16,6 +16,10 @@
 <div>
 	<span class="content challdefault">
 		<%= single_note.body.html_safe %>
+	</span>
+</div>
+<div>
+	<span class="timestamp">Challenge: <%= link_to(single_note.challenge.title, single_note.challenge) if single_note.challenge %>
 	</span>
 </div>
 </li>

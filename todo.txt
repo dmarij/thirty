@@ -1,7 +1,3 @@
 
-- otvoriti gmail thirty account i promijeniti postavke
-
-
-- dodati heroku app
-- precompile assets heroku
-- set heroku env variable
+- urediti all challenges new
+- nerediti challenge: na notesima

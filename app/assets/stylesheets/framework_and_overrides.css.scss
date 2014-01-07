@@ -3,6 +3,9 @@
 @import "bootstrap-responsive";
 
 /* universal */
+.control-group, .field_with_errors, .status, .form-inputs {
+margin-top: 20px;
+}
 
 html {
 	overflow-y: scroll;

@@ -2,9 +2,7 @@
 <div class="span8">  
   <div>
 	<h3 class="muted bordered">Active Challenges</h3>
-	<%= link_to('<i class="icon-plus"></i> New Challenge'.html_safe, new_challenge_path, class: 'btn btn-link pull-right') %>
 	</div>
-	<br/>
 	<% if @challenges.any? %>
 		<ol class="challenges">
 			<%= render partial: 'challenges/single_challenge', collection: @challenges %>
@@ -13,17 +11,15 @@
 		<%= will_paginate @challenges %>
 		</div>
 	<% else %>
+	<br/>
 	<h4 class="muted center">Oh my! You don't have any active challenges.</h4>
 	<% end %>
 </div>
-<aside class="span4"><h3 class="muted bordered">Stats</h3>
-	<% if @challenges_all.any? %>
-    <%= render '/challenges/chart' %>
-  <% else %>
-    <div></br>
-    <h4 class="muted center">Nothing to show.</h4>
-    </div>
-  <% end %>
+<aside class="span4">
+	<div>
+	<h3 class="muted bordered">New Challenge</h3>
+		<%= render 'challenges/form' %>
+	</div>
 </aside>
 <% else %>
 	<div class="span12">
@@ -36,4 +32,6 @@
 	</div>
 	</div>
 <% end %>
+
+
 

@@ -19,6 +19,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-select-rails'
 gem 'googlecharts'
+gem 'browser-timezone-rails'
 
 group :development do
   gem 'better_errors'
@@ -38,6 +39,8 @@ group :development, :test do
   gem 'rspec-rails'
 end
 group :production do
+  gem 'pg'
+  gem 'rails_12factor'
   gem 'unicorn'
 end
 group :test do

@@ -67,15 +67,7 @@
 <%= will_paginate %>
 </div>
 </div>
-<aside class="span4"><h3 class="muted bordered">Stats</h3>
-  <% if @challenges.any? %>
-    <%= render 'chart' %>
-  <% else %>
-    <div></br>
-    <h4 class="muted center">Nothing to show.</h4>
-    </div>
-  <% end %>
-
+<aside class="span4">
   <h3 class="muted bordered">Search</h3><br/>
   <%= search_form_for @q, :html => {:class => ""} do |f| %>
   <div class="row">
@@ -84,20 +76,27 @@
     <%= f.text_field :title_cont, placeholder: "Search by Title" %>
     </span>
     </div>
-    <br/><br/>
-    <div>
+  </div>
+  <div class="row">
     <% options = [['Active', 'active'], ['Done', 'done'], ['Failed', 'failed']] %>
-    <span class="span2">
+    <div class="span4">
     <%= f.select(:final_state_in, options, {}, {:class => "selectpicker", :multiple => true}) %>
-    </span>
-    <span class="span2">
+    </div>
+    <span>
     <%= f.button( :class => "btn btn-link pull-right") do %>
       <i class="icon-search"></i> Search
     <% end %>
     </span>
-    </div>
-    <% end %>
+  <% end %>
   </div>
+  <h3 class="muted bordered">Stats</h3>
+  <% if @challenges_all.any? %>
+    <%= render 'chart' %>
+  <% else %>
+    <div></br>
+    <h4 class="muted center">Nothing to show.</h4>
+    </div>
+  <% end %>
 </aside>
 <script type="text/javascript">
    $('.selectpicker').selectpicker({

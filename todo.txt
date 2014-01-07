@@ -1,5 +1,7 @@
-- dodati time zone usera
 
 - otvoriti gmail thirty account i promijeniti postavke
-- dodati ssl postavku
-- dodati produkcijske pg gemove
+
+
+- dodati heroku app
+- precompile assets heroku
+- set heroku env variable

@@ -7,6 +7,7 @@ class ChallengesController < ApplicationController
   def index
     delete_new_challenge_refferer
     my_store_location
+    @challenges_all = current_user.challenges
     @q = current_user.challenges.search(params[:q])
     @challenges = @q.result.paginate(:page => params[:page], :per_page => 14)
   end
